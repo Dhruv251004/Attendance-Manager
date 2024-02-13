@@ -7,7 +7,6 @@ const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
 const fetchUser = require("../fetchUser");
 const privateKey = process.env.PRIVATE_KEY;
-console.log("Private key ", privateKey);
 
 router.post(
   "/createuser",

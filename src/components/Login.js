@@ -12,7 +12,7 @@ const inputStyle = {
   border: "none",
   margin: "15px 0px",
 };
-
+const baseUrl = process.env.REACT_APP_BASE_URL;
 const Login = () => {
   const { setLoggedin, showAlert } = useContext(MyContext);
   const navigate = useNavigate();
@@ -20,10 +20,10 @@ const Login = () => {
     e.preventDefault();
     const email = document.getElementById("exampleInputEmail1").value;
     const password = document.getElementById("exampleInputPassword1").value;
-    if(!email || !password){
-      return showAlert("Please fill all the details","danger")
+    if (!email || !password) {
+      return showAlert("Please fill all the details", "danger");
     }
-    const result = await fetch("http://localhost:5000/auth/login", {
+    const result = await fetch(`${baseUrl}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

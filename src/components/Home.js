@@ -9,12 +9,14 @@ const subjStyle = {
   display: "flex",
   justifyContent: "center",
 };
+
+const baseUrl = process.env.REACT_APP_BASE_URL;
 const Home = () => {
   const [subjects, setSubjects] = useState([]);
   const { setLoggedin } = useContext(MyContext);
   const navigate = useNavigate();
   const fetchSubjects = async () => {
-    const result = await fetch("http://localhost:5000/api/subjects", {
+    const result = await fetch(`${baseUrl}/api/subjects`, {
       method: "GET",
       headers: {
         "auth-token": localStorage.getItem("auth-token"),
@@ -36,7 +38,7 @@ const Home = () => {
       const token = localStorage.getItem("auth-token");
       if (token) {
         //authenticate
-        const result = await fetch("http://localhost:5000/auth/getuser", {
+        const result = await fetch(`${baseUrl}/auth/getuser`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -57,7 +59,7 @@ const Home = () => {
     // eslint-disable-next-line
   }, []);
   const deleteSub = async (id) => {
-    const result = await fetch(`http://localhost:5000/api/subjects/${id}`, {
+    const result = await fetch(`${baseUrl}/api/subjects/${id}`, {
       method: "DELETE",
       headers: {
         "auth-token": localStorage.getItem("auth-token"),
@@ -70,7 +72,7 @@ const Home = () => {
   };
 
   const addSub = async (subject, present, total) => {
-    const result = await fetch(`http://localhost:5000/api/subjects`, {
+    const result = await fetch(`${baseUrl}/api/subjects`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

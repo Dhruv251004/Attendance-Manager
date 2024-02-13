@@ -12,7 +12,7 @@ const inputStyle = {
   border: "none",
   margin: "15px 0px",
 };
-
+const baseUrl = process.env.REACT_APP_BASE_URL;
 const Signup = () => {
   const { setLoggedin, showAlert } = useContext(MyContext);
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const Signup = () => {
     if (password.length < 8) {
       return showAlert("Password should be minimum 8 characters", "danger");
     }
-    const result = await fetch("http://localhost:5000/auth/createuser", {
+    const result = await fetch(`${baseUrl}/auth/createuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useContext } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { MyContext } from "../context/MyContext";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 const SubjectCard = (props) => {
   const [subjectDetails, setSubjectDetails] = useState({
     subject: props.subject,
@@ -21,21 +22,18 @@ const SubjectCard = (props) => {
     padding: "10px 20px",
   };
   const update = async (subject, present, total) => {
-    const response = await fetch(
-      `http://localhost:5000/api/subjects/${props.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("auth-token"),
-        },
-        body: JSON.stringify({
-          subject,
-          present,
-          total,
-        }),
-      }
-    );
+    const response = await fetch(`${baseUrl}/api/subjects/${props.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
+      },
+      body: JSON.stringify({
+        subject,
+        present,
+        total,
+      }),
+    });
     const result = await response.json();
     if (!result.success) {
       throw result.error;
