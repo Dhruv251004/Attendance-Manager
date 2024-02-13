@@ -1,3 +1,4 @@
+require("dotenv").config({ path: "../../.env" });
 const express = require("express");
 const router = express.Router();
 const User = require("../Models/userSchema");
@@ -5,7 +6,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
 const fetchUser = require("../fetchUser");
-const privateKey = "fi9uh3fvuyw34ifugy43fci04gjche";
+const privateKey = process.env.PRIVATE_KEY;
+console.log("Private key ", privateKey);
 
 router.post(
   "/createuser",
@@ -30,7 +32,7 @@ router.post(
       if (user.length != 0) {
         return res.status(400).json({
           success,
-          error:"User with this email already exist"
+          error: "User with this email already exist",
         });
       }
       const salt = await bcrypt.genSalt(10);

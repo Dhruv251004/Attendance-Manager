@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
-const mongoURI = "mongodb://0.0.0.0:27017/attendanceManager"; 
+const mongoose = require("mongoose");
 
-const connectToMongo = () => {
-    mongoose.connect(mongoURI)
-    console.log("Connected to MongoDb")
-}
+
+const connectToMongo = async (mongoURI) => {
+  await mongoose.connect(mongoURI);
+  console.log("Connected to MongoDb");
+};
 
 module.exports = connectToMongo;
