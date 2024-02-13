@@ -10,7 +10,7 @@ const mongoConnector = require("./connector");
 app.use(express.static("public"));
 
 const PORT = process.env.PORT;
-const mongoURI = process.env.LOCAL_MONGODB_URI;
+const mongoURI = process.env.ATLAS_MONGODB_URI;
 mongoConnector(mongoURI);
 
 //Middlewares

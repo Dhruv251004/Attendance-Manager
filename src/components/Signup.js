@@ -21,10 +21,10 @@ const Signup = () => {
     const name = document.getElementById("exampleInputName").value;
     const email = document.getElementById("exampleInputEmail1").value;
     const password = document.getElementById("exampleInputPassword1").value;
-    if (name.length == 0) {
+    if (name.length === 0) {
       return showAlert("Name can't be empty", "danger");
     }
-    if (email.length == 0) {
+    if (email.length === 0) {
       return showAlert("Email can't be empty", "danger");
     }
     if (password.length < 8) {
