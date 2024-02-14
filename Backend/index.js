@@ -16,7 +16,7 @@ mongoConnector(mongoURI);
 //Middlewares
 app.use(bodyParser.json());
 app.use(cors());
-app.use("/", () => {
+app.use("/", (req, res) => {
   res.send("<h1>Hello</h1>");
 });
 app.use("/api", SubjectRouter);
