@@ -16,6 +16,13 @@ mongoConnector(mongoURI);
 //Middlewares
 app.use(bodyParser.json());
 app.use(cors());
+const corsOptions = {
+  origin: "*",
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
 app.get("/", (req, res) => {
   res.send("<h1>Hello</h1>");
 });
