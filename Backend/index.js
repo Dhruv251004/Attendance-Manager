@@ -10,22 +10,19 @@ const mongoConnector = require("./connector");
 app.use(express.static("public"));
 
 const PORT = process.env.BPORT;
-const mongoURI = process.env.MONGODB_URI;
+// const mongoURI = process.env.MONGODB_URI;
+const mongoURI = process.env.ATLAS_MONGODB_URI;
+// console.log(mongoURI);
 mongoConnector(mongoURI);
 
 //Middlewares
 app.use(bodyParser.json());
 app.use(cors());
-const corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200,
-};
 
-app.use(cors(corsOptions));
-
-app.get("/", (req, res) => {
-  res.send("<h1>Hello</h1>");
+app.get("/server_check", (req, res) => {
+  res.send("<h1>SERVER IS RUNNING</h1>");
 });
+
 app.use("/api", SubjectRouter);
 app.use("/auth", authRouter);
 
