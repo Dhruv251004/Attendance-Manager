@@ -10,7 +10,8 @@ const subjStyle = {
   justifyContent: "center",
 };
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
+// const baseUrl = process.env.REACT_APP_BASE_URL;
+const baseUrl = "https://attendance-manager-api.vercel.app";
 const Home = () => {
   const [subjects, setSubjects] = useState([]);
   const { setLoggedin } = useContext(MyContext);

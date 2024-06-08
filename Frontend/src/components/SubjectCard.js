@@ -1,7 +1,8 @@
 import React, { useState, useRef, useContext } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { MyContext } from "../context/MyContext";
-const baseUrl = process.env.REACT_APP_BASE_URL;
+// const baseUrl = process.env.REACT_APP_BASE_URL;
+const baseUrl = "https://attendance-manager-api.vercel.app";
 const SubjectCard = (props) => {
   const [subjectDetails, setSubjectDetails] = useState({
     subject: props.subject,

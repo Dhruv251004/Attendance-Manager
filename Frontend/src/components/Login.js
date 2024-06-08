@@ -12,7 +12,8 @@ const inputStyle = {
   border: "none",
   margin: "15px 0px",
 };
-const baseUrl = process.env.REACT_APP_BASE_URL;
+// const baseUrl = process.env.REACT_APP_BASE_URL;
+const baseUrl = "https://attendance-manager-api.vercel.app";
 const Login = () => {
   const { setLoggedin, showAlert } = useContext(MyContext);
   const navigate = useNavigate();
